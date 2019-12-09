@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import { timer } from 'rxjs';
 
 
 import { AuthService } from '@service/auth';
@@ -15,7 +16,9 @@ export class DashboardComponent implements OnInit {
     private auth: AuthService,
     private data: DataService,
   ) {
-   console.log( localStorage.getItem('acces_token') );
+    timer(1000, 2000).subscribe( val => {
+      this.updateChart();
+    });
   }
 
   radioModel: string = 'Month';
@@ -396,7 +399,6 @@ export class DashboardComponent implements OnInit {
       this.mainChartData3.push(65);
     }
   }
-
 
   updateChart() {
     const data = this.data.gatherData();
