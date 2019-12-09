@@ -7,9 +7,12 @@
     "target": "es5",
     "types": [],
     "paths": {
-      "@angular/*": [
-        "../node_modules/@angular/*"
-      ]
+      "@angular/*": ["../node_modules/@angular/*"],
+      "@service/*": ["app/services/*"],
+      "@guard/*": ["app/guards/*"],
+      "@component/*": ["app/components/*"],
+      "@view/*": ["app/view/*"],
+      "@env/*": ["environments/*"]
     }
   },
   "angularCompilerOptions": {

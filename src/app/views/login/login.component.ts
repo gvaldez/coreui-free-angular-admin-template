@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { IoService } from '../../services/io/io.service';
+import { AuthService } from '@service/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,38 +15,23 @@ export class LoginComponent {
   response: any;
 
   constructor(
-    private io: IoService,
+    private auth: AuthService,
     private router: Router,
   ) {
-    const response = this.io.api({
-      url: 'http://localhost:3000',
-      method: 'GET',
-    });
-
-    console.log(response);
+    if ( this.auth.isAuthorized() ) {
+      this.router.navigate(['/dashboard']);
+    }
   }
 
   login() {
-    if (this.user && this.pass) {
-
-      this.response = this.io.api({
-        url: 'http://localhost:3000/authenticate',
-        method: 'POST',
-        body: {
-          user: this.user,
-          pass: this.pass,
-        }
-      });
-
-      console.log(this.response);
-
-      localStorage.setItem('acces_token', this.response.body.token);
-      this.router.navigate(['/']);
-
-
-    } else {
-      this.response = 'invalid parameters';
-      console.log('invalid parameters');
+    this.response = this.auth.login(this.user, this.pass);
+    if (this.response) {
+      if (this.response.status === 200) {
+        this.router.navigate(['/dashboard']);
+      }
     }
   }
+
+
+
 }

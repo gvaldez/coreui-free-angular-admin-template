@@ -2,19 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 
-
-import { AuthService } from '@service/auth';
-import { DataService } from '@service/data';
-
 @Component({
-  templateUrl: 'dashboard.component.html'
+  templateUrl: 'dashboard-demo.component.html'
 })
-export class DashboardComponent implements OnInit {
+export class DashboardDemoComponent implements OnInit {
 
-  constructor(
-    private auth: AuthService,
-    private data: DataService,
-  ) {
+  constructor() {
    console.log( localStorage.getItem('acces_token') );
   }
 
@@ -395,21 +388,5 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
-  }
-
-
-  updateChart() {
-    const data = this.data.gatherData();
-
-    if (data.length > 0) {
-      this.lineChart2Data = [
-        { data, label: 'Series A' }
-      ];
-    }
-  }
-
-
-  logout() {
-    this.auth.logout();
   }
 }
