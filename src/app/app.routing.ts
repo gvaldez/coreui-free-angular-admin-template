@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
+import { CustomLayoutComponent } from './containers/custom-layout';
 
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
@@ -46,6 +47,13 @@ export const routes: Routes = [
     }
   },
   {
+    path: 'register',
+    component: RegisterComponent,
+    data: {
+      title: 'Register Page'
+    }
+  },
+  {
     path: 'demo',
     component: DefaultLayoutComponent,
     data: {
@@ -55,6 +63,20 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadChildren: () => import('./views/demo/dashboard/dashboard-demo.module').then(m => m.DashboardDemoModule)
+      },
+    ]
+  },
+  {
+    path: 'pocs',
+    canActivate: [ AuthGuard ],
+    component: CustomLayoutComponent,
+    data: {
+      title: 'Pocs'
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./views/pocs').then(m => m.PocsModule)
       },
     ]
   },

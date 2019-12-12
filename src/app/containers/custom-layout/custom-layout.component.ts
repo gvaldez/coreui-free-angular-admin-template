@@ -1,13 +1,13 @@
 import {Component } from '@angular/core';
-import { navItems } from '../../_nav';
+import { navItems } from './_nav.custom';
 
 import { AuthService } from '@service/auth';
 
 @Component({
   selector: 'app-dashboard',
-  templateUrl: './default-layout.component.html'
+  templateUrl: './custom-layout.component.html'
 })
-export class DefaultLayoutComponent {
+export class CustomLayoutComponent {
   public sidebarMinimized = false;
   public navItems = navItems;
 

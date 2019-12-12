@@ -23,6 +23,7 @@
       "@guard/*": ["src/app/guards/*"],
       "@component/*": ["src/app/components/*"],
       "@view/*": ["src/app/view/*"],
+      "@module/*": ["src/app/modules/*"],
       "@env/*": ["src/environments/*"]
     }
   }

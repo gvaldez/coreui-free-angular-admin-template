@@ -15,7 +15,7 @@ export class DataService {
   gatherData () {
     const token = localStorage.getItem('acces_token');
     const response = this.io.api({
-      url: `${env.auth.host}/data`,
+      url: `${env.auth.host}/api/bi/data`,
       method: 'GET',
       headers: {  Authorization: `Bearer ${token}` }
     });

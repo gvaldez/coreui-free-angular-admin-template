@@ -35,7 +35,7 @@ export class AuthService {
     if (user && password) {
 
       const response = this.io.api({
-        url: `${env.auth.host}/authenticate`,
+        url: `${env.auth.host}/api/auth/authenticate`,
         method: 'POST',
         body: {
           user: user,
@@ -63,7 +63,7 @@ export class AuthService {
     if (token) {
 
       const response = this.io.api({
-        url: `${env.auth.host}/authorize`,
+        url: `${env.auth.host}/api/auth/authorize`,
         method: 'GET',
         headers: {  Authorization: `Bearer ${token}` }
       });

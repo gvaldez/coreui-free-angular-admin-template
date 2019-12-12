@@ -49,6 +49,8 @@ export class IoService {
       };
     }
 
+    console.log({request: options, response});
+
     return response;
   }
 }

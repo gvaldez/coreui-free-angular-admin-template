@@ -2,6 +2,15 @@ import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
   {
+    name: 'Pocs',
+    url: '/pocs',
+    icon: 'icon-speedometer',
+    badge: {
+      variant: 'light',
+      text: 'Custom'
+    }
+  },
+  {
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer',

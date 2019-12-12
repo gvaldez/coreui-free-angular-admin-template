@@ -6,6 +6,6 @@
 export const environment = {
   production: false,
   auth: {
-    host: 'http://localhost:3000'
+    host: 'https://localhost:3000'
   }
 };

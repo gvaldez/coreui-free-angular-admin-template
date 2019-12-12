@@ -19,7 +19,7 @@ export class LoginComponent {
     private router: Router,
   ) {
     if ( this.auth.isAuthorized() ) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['/pocs']);
     }
   }
 
@@ -27,7 +27,7 @@ export class LoginComponent {
     this.response = this.auth.login(this.user, this.pass);
     if (this.response) {
       if (this.response.status === 200) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/pocs']);
       }
     }
   }

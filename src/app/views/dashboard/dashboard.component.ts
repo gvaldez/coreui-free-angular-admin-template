@@ -3,8 +3,8 @@ import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
 import { timer } from 'rxjs';
 
+import io from 'socket.io-client';
 
-import { AuthService } from '@service/auth';
 import { DataService } from '@service/data';
 
 @Component({
@@ -12,13 +12,19 @@ import { DataService } from '@service/data';
 })
 export class DashboardComponent implements OnInit {
 
+  socket: any;
+
   constructor(
-    private auth: AuthService,
     private data: DataService,
   ) {
-    timer(1000, 2000).subscribe( val => {
-      this.updateChart();
+    this.socket = io('wss://localhost:3000');
+    // this.socket.emit('event', {some: 'text'});
+    this.socket.on('chartUpdate',  (ev: any) => {
+      this.updateChart(ev.data);
     });
+    // timer(1000, 2000).subscribe( val => {
+    //   this.updateChart();
+    // });
   }
 
   radioModel: string = 'Month';
@@ -400,9 +406,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  updateChart() {
-    const data = this.data.gatherData();
-
+  updateChart(data: number[]) {
     if (data.length > 0) {
       this.lineChart2Data = [
         { data, label: 'Series A' }
@@ -411,7 +415,4 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  logout() {
-    this.auth.logout();
-  }
 }

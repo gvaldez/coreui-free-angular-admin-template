@@ -12,7 +12,8 @@
       "@guard/*": ["app/guards/*"],
       "@component/*": ["app/components/*"],
       "@view/*": ["app/view/*"],
-      "@env/*": ["environments/*"]
+      "@module/*": ["app/modules/*"],
+      "@env/*": ["environments/*"],
     }
   },
   "angularCompilerOptions": {
