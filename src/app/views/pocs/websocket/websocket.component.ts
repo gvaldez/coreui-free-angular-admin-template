@@ -71,7 +71,7 @@ export class WebsocketComponent implements OnInit {
   public lineChart2Type = 'line';
 
   constructor() {
-    this.socket = io('wss://localhost:3000');
+    this.socket = io('ws://localhost:3000');
     this.socket.on('chartUpdate',  (ev: any) => {
       this.updateChart(ev.data);
     });

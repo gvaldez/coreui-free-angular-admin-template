@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private data: DataService,
   ) {
-    this.socket = io('wss://localhost:3000');
+    this.socket = io('ws://localhost:3000');
     // this.socket.emit('event', {some: 'text'});
     this.socket.on('chartUpdate',  (ev: any) => {
       this.updateChart(ev.data);
