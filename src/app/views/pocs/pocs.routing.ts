@@ -17,6 +17,13 @@ const routes: Routes = [
     }
   },
   {
+    path: 'timer2',
+    component: TimerComponent,
+    data: {
+      title: 'Timer22222'
+    }
+  },
+  {
     path: 'websocket',
     component: WebsocketComponent,
     data: {

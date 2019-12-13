@@ -11,6 +11,11 @@ export const navItems: INavData[] = [
     icon: 'icon-speedometer',
   },
   {
+    name: 'Timer222222222222',
+    url: '/pocs/timer2',
+    icon: 'icon-drop',
+  },
+  {
     name: 'Websocket',
     url: '/pocs/websocket',
     icon: 'icon-speedometer',
